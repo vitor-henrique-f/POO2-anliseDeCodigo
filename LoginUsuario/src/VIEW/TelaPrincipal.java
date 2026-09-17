@@ -141,7 +141,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_menuSobreActionPerformed
 
     private void usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usuarioActionPerformed
-        telaUsuarios usuario = new telaUsuarios();
+        TelaUsuarios usuario = new TelaUsuarios();
         usuario.setVisible(true);
         desktop.add(usuario);
     }//GEN-LAST:event_usuarioActionPerformed

@@ -4,12 +4,12 @@ import java.sql.*;
 import DAO.Mod_conexao;
 import javax.swing.JOptionPane;
 
-public class telaUsuarios extends javax.swing.JInternalFrame {
+public class TelaUsuarios extends javax.swing.JInternalFrame {
     Connection conexao = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     
-    public telaUsuarios() {
+    public TelaUsuarios() {
         initComponents();
         conexao = Mod_conexao.conector();
     }
