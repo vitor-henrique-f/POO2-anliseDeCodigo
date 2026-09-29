@@ -36,11 +36,11 @@ public class TelaSobre extends javax.swing.JFrame {
 
         jLabel1.setText("Sistema de CRUD - SEG POA 2DM");
 
-        jLabel3.setText("Criado e Desenvolvido por Flavio Silva");
+        jLabel3.setText("Criado e Desenvolvido por Vitor Henrique");
 
         jLabel4.setText("Distribuição Free");
 
-        jLabel5.setText("Data de criação: 22/02/2024");
+        jLabel5.setText("Data de criação: 29/09/2026");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -61,7 +61,7 @@ public class TelaSobre extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(70, 70, 70)
                         .addComponent(jLabel3)))
-                .addContainerGap(94, Short.MAX_VALUE))
+                .addContainerGap(75, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)

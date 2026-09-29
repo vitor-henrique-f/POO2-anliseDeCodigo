@@ -4,7 +4,7 @@ package DTO;
 public class ClienteDTO {
     
     private int Id_Cliente;
-    private int Telefone_Cliente;
+    private String Telefone_Cliente;
     private String Nome_Cliente;
     private String Endereco_Cliente;
     private String Cidade_Cliente;
@@ -14,10 +14,6 @@ public class ClienteDTO {
 
     public int getId_Cliente() {
         return Id_Cliente;
-    }
-
-    public int getTelefone_Cliente() {
-        return Telefone_Cliente;
     }
 
     public String getNome_Cliente() {
@@ -48,8 +44,12 @@ public class ClienteDTO {
         this.Id_Cliente = Id_Cliente;
     }
 
-    public void setTelefone_Cliente(int Telefone_Cliente) {
+    public void setTelefone_Cliente(String Telefone_Cliente) {
         this.Telefone_Cliente = Telefone_Cliente;
+    }
+
+    public String getTelefone_Cliente() {
+        return Telefone_Cliente;
     }
 
     public void setNome_Cliente(String Nome_Cliente) {

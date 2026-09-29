@@ -44,7 +44,7 @@
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="94" max="32767" attributes="0"/>
+              <EmptySpace pref="75" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -81,7 +81,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Criado e Desenvolvido por Flavio Silva"/>
+        <Property name="text" type="java.lang.String" value="Criado e Desenvolvido por Vitor Henrique"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
@@ -91,7 +91,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Data de cria&#xe7;&#xe3;o: 22/02/2024"/>
+        <Property name="text" type="java.lang.String" value="Data de cria&#xe7;&#xe3;o: 29/09/2026"/>
       </Properties>
     </Component>
   </SubComponents>

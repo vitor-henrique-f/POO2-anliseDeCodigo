@@ -15,11 +15,11 @@ public class TelaLogin extends javax.swing.JFrame {
     conexao = Mod_conexao.conector();
  
     if (conexao != null) {
-    lbl_Status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/KnobValidGreen.png")));
+    lbl_Status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/KnobValidGreen.png")));
     } 
     
     else {
-    lbl_Status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Icones/KnobCancel.png")));
+    lbl_Status.setIcon(new javax.swing.ImageIcon(getClass().getResource("/assets/KnobCancel.png")));
         }
     }
     

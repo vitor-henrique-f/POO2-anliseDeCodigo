@@ -234,7 +234,7 @@ public class TelaClientes extends javax.swing.JFrame {
         ClienteDTO objcliente = new ClienteDTO();
 
     objcliente.setNome_Cliente(txtNome.getText());
-    objcliente.setTelefone_Cliente(Integer.parseInt(txtTelefone.getText()));
+    objcliente.setTelefone_Cliente(txtTelefone.getText());
     objcliente.setEndereco_Cliente(txtEndereco.getText());
     objcliente.setCidade_Cliente(txtCidade.getText());
     objcliente.setUF_Cliente(txtUF.getText());
@@ -253,7 +253,7 @@ public class TelaClientes extends javax.swing.JFrame {
         PreparedStatement stmt = conexao.prepareStatement(sql);
 
         stmt.setString(1, objcliente.getNome_Cliente());
-        stmt.setInt(2, objcliente.getTelefone_Cliente());
+        stmt.setString(2, objcliente.getTelefone_Cliente());
         stmt.setString(3, objcliente.getEndereco_Cliente());
         stmt.setString(4, objcliente.getCidade_Cliente());
         stmt.setString(5, objcliente.getUF_Cliente());
