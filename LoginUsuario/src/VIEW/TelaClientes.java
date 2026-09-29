@@ -5,6 +5,13 @@
  */
 package VIEW;
 
+import DAO.Mod_conexao;
+import DTO.ClienteDTO;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author aluno.saolucas
@@ -31,7 +38,7 @@ public class TelaClientes extends javax.swing.JFrame {
         txtDataNascimento = new javax.swing.JTextField();
         txtTelefone = new javax.swing.JTextField();
         txtCPF = new javax.swing.JTextField();
-        txtEndereço = new javax.swing.JTextField();
+        txtEndereco = new javax.swing.JTextField();
         txtCidade = new javax.swing.JTextField();
         txtUF = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -93,8 +100,18 @@ public class TelaClientes extends javax.swing.JFrame {
         jlDataNascimento.setText("Data de nascimento");
 
         bnAdicionar.setText("Adicionar");
+        bnAdicionar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnAdicionarActionPerformed(evt);
+            }
+        });
 
         bnApagar.setText("Apagar");
+        bnApagar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bnApagarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -137,7 +154,7 @@ public class TelaClientes extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(txtDataNascimento, javax.swing.GroupLayout.DEFAULT_SIZE, 145, Short.MAX_VALUE)
                             .addComponent(txtUF)
-                            .addComponent(txtEndereço)
+                            .addComponent(txtEndereco)
                             .addComponent(txtTelefone)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(267, 267, 267)
@@ -169,7 +186,7 @@ public class TelaClientes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtEndereço, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jlCidade)
@@ -211,6 +228,102 @@ public class TelaClientes extends javax.swing.JFrame {
     private void txtTelefoneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTelefoneActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTelefoneActionPerformed
+
+    private void bnAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnAdicionarActionPerformed
+
+        ClienteDTO objcliente = new ClienteDTO();
+
+    objcliente.setNome_Cliente(txtNome.getText());
+    objcliente.setTelefone_Cliente(Integer.parseInt(txtTelefone.getText()));
+    objcliente.setEndereco_Cliente(txtEndereco.getText());
+    objcliente.setCidade_Cliente(txtCidade.getText());
+    objcliente.setUF_Cliente(txtUF.getText());
+    objcliente.setCPF_Cliente(txtCPF.getText());
+    objcliente.setData_Nasc_Cliente(txtDataNascimento.getText());
+
+    String sql = "INSERT INTO tb_clientes "
+            + "(Nome_Cliente, Telefone_Cliente, Endereco_Cliente, "
+            + "Cidade_Cliente, UF_Cliente, CPF_Cliente, Data_Nasc_Cliente) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+
+    try {
+
+        Connection conexao = Mod_conexao.conector();
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+
+        stmt.setString(1, objcliente.getNome_Cliente());
+        stmt.setInt(2, objcliente.getTelefone_Cliente());
+        stmt.setString(3, objcliente.getEndereco_Cliente());
+        stmt.setString(4, objcliente.getCidade_Cliente());
+        stmt.setString(5, objcliente.getUF_Cliente());
+        stmt.setString(6, objcliente.getCPF_Cliente());
+        stmt.setString(7, objcliente.getData_Nasc_Cliente());
+
+        stmt.executeUpdate();
+
+        JOptionPane.showMessageDialog(null,
+                "Cliente cadastrado com sucesso!");
+
+        stmt.close();
+        conexao.close();
+
+    } catch (SQLException erro) {
+
+        JOptionPane.showMessageDialog(null,
+                "Erro ao cadastrar cliente: " + erro.getMessage());
+
+    } catch (NumberFormatException erro) {
+
+        JOptionPane.showMessageDialog(null,
+                "Telefone deve conter apenas números.");
+
+    }
+    }//GEN-LAST:event_bnAdicionarActionPerformed
+
+    private void bnApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bnApagarActionPerformed
+
+           try {
+
+        int id = Integer.parseInt(txtID.getText());
+
+        String sql = "DELETE FROM tb_clientes WHERE Id_Cliente = ?";
+
+        Connection conexao = Mod_conexao.conector();
+
+        PreparedStatement stmt = conexao.prepareStatement(sql);
+
+        stmt.setInt(1, id);
+
+        int resultado = stmt.executeUpdate();
+
+        if (resultado > 0) {
+
+            JOptionPane.showMessageDialog(null,
+                    "Cliente apagado com sucesso!");
+
+        } else {
+
+            JOptionPane.showMessageDialog(null,
+                    "Cliente não encontrado.");
+
+        }
+
+        stmt.close();
+        conexao.close();
+
+    } catch (NumberFormatException erro) {
+
+        JOptionPane.showMessageDialog(null,
+                "Digite um ID válido.");
+
+    } catch (SQLException erro) {
+
+        JOptionPane.showMessageDialog(null,
+                "Erro ao apagar cliente: " + erro.getMessage());
+    }
+        
+    }//GEN-LAST:event_bnApagarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -262,7 +375,7 @@ public class TelaClientes extends javax.swing.JFrame {
     private javax.swing.JTextField txtCPF;
     private javax.swing.JTextField txtCidade;
     private javax.swing.JTextField txtDataNascimento;
-    private javax.swing.JTextField txtEndereço;
+    private javax.swing.JTextField txtEndereco;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTelefone;
